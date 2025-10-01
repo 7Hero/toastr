@@ -1,0 +1,113 @@
+:root {
+  --width: 356px;
+  --top-offset: 24px;
+  --bottom-offset: 24px;
+  --left-offset: 24px;
+  --right-offset: 24px;
+}
+
+.toastr {
+  position: fixed;
+  width: var(--width);
+  pointer-events: auto;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  height: 1;
+  list-style: none;
+  outline: none;
+  z-index: 999999999;
+}
+
+.toastr[data-y-position="bottom"] {
+  bottom: var(--bottom-offset);
+}
+
+.toastr[data-y-position="top"] {
+  top: var(--top-offset);
+}
+
+.toastr[data-x-position="left"] {
+  left: var(--left-offset);
+}
+
+.toastr[data-x-position="right"] {
+  right: var(--right-offset);
+}
+
+.toastr[data-x-position="center"] {
+  transform: translateX(-50%);
+  left: 50%;
+}
+
+.toast {
+  display: flex;
+  position: absolute;
+  transition: transform 300ms, scale 300ms, opacity 300ms;
+  transform: var(--y);
+  color: hsl(0, 0%, 9%);
+  box-sizing: border-box;
+  opacity: 0;
+  border: 1px solid hsl(0, 0%, 93%);
+  border-radius: 8px;
+  padding: 16px;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: Inter;
+  text-align: left;
+  width: var(--width);
+  list-style-type: none;
+  background-color: #fff;
+  z-index: var(--z-index);
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.toast[data-y-position="top"] {
+  top: 0;
+  --y: translateY(-100%);
+}
+
+.toast[data-y-position="bottom"] {
+  bottom: 0;
+  --y: translateY(100%);
+}
+
+.toast[data-mounted="true"][data-expanded="false"] {
+  --y: translateY(calc(var(--lift) * var(--invert)))
+    scale(calc(1 - 0.05 * var(--index)));
+}
+
+.toast[data-visible="true"] {
+  opacity: 1;
+}
+
+.toast[data-mounted="true"][data-expanded="true"] {
+  --y: translateY(calc(var(--offset) * var(--invert)));
+}
+
+.toast[data-removed="true"] {
+  --y: translateY(calc(-100% * var(--invert))) !important;
+  opacity: 0;
+}
+
+.toast[data-visible="false"] {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.toast[data-expanded="true"]::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  height: calc(var(--gap) + 2px);
+  width: 100%;
+}
+
+.toast[data-expanded="true"][data-y-position="top"]::after {
+  top: 100%;
+}
+
+.toast[data-expanded="true"][data-y-position="bottom"]::after {
+  bottom: 100%;
+}

@@ -1,0 +1,37 @@
+{
+  "name": "@vasilepopescu/toastr",
+  "version": "1.0.1",
+  "description": "A tiny react toast component",
+  "author": "Popescu Vasile",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./dist/styles.css": "./dist/styles.css"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "bunchee && cp src/styles.css dist/styles.css"
+  },
+  "keywords": [],
+  "license": "ISC",
+  "peerDependencies": {
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
+  },
+  "devDependencies": {
+    "@types/react": "^19.1.16",
+    "@types/react-dom": "^19.1.9",
+    "bunchee": "^6.6.0",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "@vasilepopescu/toastr": "^1.0.0"
+  }
+}
