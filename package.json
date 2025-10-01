@@ -1,6 +1,6 @@
 {
   "name": "@vasilepopescu/toastr",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A tiny react toast component",
   "author": "Popescu Vasile",
   "type": "module",

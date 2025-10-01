@@ -1,3 +1,5 @@
+import { ToastData } from "src/types";
+
 let toasterCount = 1;
 
 class Observer {
@@ -7,13 +9,18 @@ class Observer {
     this.subscribers.add(callback);
   }
 
-  publish(data: unknown) {
+  publish(data: ToastData | string) {
+    let temp;
+    if (typeof data == "string") {
+      temp = { message: data };
+    }
+
     const toastData = {
-      ...(data as object),
+      ...temp,
       id: toasterCount++,
       dismiss: false,
     };
-    console.log(toastData);
+
     this.subscribers.forEach((callback) => {
       callback(toastData);
     });
